@@ -10,10 +10,10 @@ namespace RobotsVsDinosaursProject
     {
 
         //member variables
-        string type;
-        double health;
-        double energy;
-        double attackPower;
+        public string type;
+        public double health;
+        public double energy;
+        public double attackPower;
 
         //constructor
         public Dinosaur(string type, double health, double energy, double attackPower)
@@ -27,7 +27,10 @@ namespace RobotsVsDinosaursProject
 
         //member methods
 
-        //public AttackRobot()
+        public void attackRobot(Robot robot)
+        {
+            robot.health = robot.health - attackPower;
+        }
 
 
     }

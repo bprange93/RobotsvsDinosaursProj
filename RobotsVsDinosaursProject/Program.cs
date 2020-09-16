@@ -11,13 +11,13 @@ namespace RobotsVsDinosaursProject
     {
         static void Main(string[] args)
         {
-            Dinosaur tRex = new Dinosaur("TRex", 100, 200, 300);
+            Dinosaur tRex = new Dinosaur("TRex", 150, 200, 300);
             Dinosaur raptor = new Dinosaur("Raptor", 150, 250, 300);
             Dinosaur spinosaur = new Dinosaur("Spinosaur", 200, 300, 400);
 
             Weapon sword = new Weapon("Sword", 150);
 
-            Robot alpha = new Robot("Alpha", 150, 250, sword);
+            Robot alpha = new Robot("Alpha", 300, 250, sword);
             Robot beta = new Robot("Beta", 100, 200, sword);
             Robot omega = new Robot("Omega", 200, 200, sword);
 
@@ -30,6 +30,14 @@ namespace RobotsVsDinosaursProject
             dinosaurs.dinosaurs.Add(tRex);
             dinosaurs.dinosaurs.Add(raptor);
             dinosaurs.dinosaurs.Add(spinosaur);
+
+            tRex.attackRobot(alpha);
+            Console.WriteLine(alpha.health);
+            Console.ReadLine();
+
+            alpha.attackDinosaur(tRex);
+            Console.WriteLine(tRex.health);
+            Console.ReadLine();
                                 
         }
     }

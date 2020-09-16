@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,10 +9,10 @@ namespace RobotsVsDinosaursProject
 {
     class Robot
     {
-        string name;
-        double health;
-        double powerLevel;
-        Weapon weapon;
+        public string name;
+        public double health;
+        public double powerLevel;
+        public Weapon weapon;
         
         public Robot(string name, double health, double powerLevel,Weapon weapon)
         {
@@ -20,6 +21,11 @@ namespace RobotsVsDinosaursProject
             this.powerLevel = powerLevel;
             this.weapon = weapon;
             
+        }
+
+        public void attackDinosaur(Dinosaur dinosaur)
+        {
+            dinosaur.health = dinosaur.health - weapon.attackPower;
         }
     }
 }
