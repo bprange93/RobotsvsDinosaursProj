@@ -26,11 +26,9 @@ namespace RobotsVsDinosaursProject
         }
 
         //member methods
-        
-        public AttackRobot()
-        {
 
-        }
+        //public AttackRobot()
+
 
     }
 }

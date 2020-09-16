@@ -26,9 +26,11 @@ namespace RobotsVsDinosaursProject
             robots.robots.Add(beta);
             robots.robots.Add(omega);
 
-            Herd dinosaur = new Herd();
-
-                
+            Herd dinosaurs = new Herd();
+            dinosaurs.dinosaurs.Add(tRex);
+            dinosaurs.dinosaurs.Add(raptor);
+            dinosaurs.dinosaurs.Add(spinosaur);
+                                
         }
     }
 }
