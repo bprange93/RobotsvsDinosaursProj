@@ -17,7 +17,7 @@ namespace RobotsVsDinosaursProject
 
             Weapon sword = new Weapon("Sword", 150);
 
-            Robot alpha = new Robot("Alpha", 300, 250, sword);
+            Robot alpha = new Robot("Alpha", 200, 250, sword);
             Robot beta = new Robot("Beta", 100, 200, sword);
             Robot omega = new Robot("Omega", 200, 200, sword);
 
