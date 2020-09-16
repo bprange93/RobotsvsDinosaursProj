@@ -8,5 +8,13 @@ namespace RobotsVsDinosaursProject
 {
     class Fleet
     {
+        public List<Robot> robots;
+
+        public Fleet()
+        {
+
+            List<Robot> robots = new List<Robot>();
+            
+        }
     }
 }

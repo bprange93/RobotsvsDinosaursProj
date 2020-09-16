@@ -8,5 +8,14 @@ namespace RobotsVsDinosaursProject
 {
     class Weapon
     {
+        string type;
+        double attackPower;
+
+        public Weapon(string type, double attackPower)
+        {
+            this.type = type;
+            this.attackPower = attackPower;
+
+        }
     }
 }
