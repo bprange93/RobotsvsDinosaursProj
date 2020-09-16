@@ -13,7 +13,7 @@ namespace RobotsVsDinosaursProject
 
         public Herd()
         {
-            List<Dinosaur> dinosaurs = new List<Dinosaur>();
+            dinosaurs = new List<Dinosaur>();
         }
 
 

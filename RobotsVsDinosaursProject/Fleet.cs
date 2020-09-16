@@ -13,7 +13,7 @@ namespace RobotsVsDinosaursProject
         public Fleet()
         {
 
-            List<Robot> robots = new List<Robot>();
+            robots = new List<Robot>();
             
         }
     }
