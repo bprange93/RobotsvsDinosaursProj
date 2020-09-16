@@ -30,7 +30,15 @@ namespace RobotsVsDinosaursProject
         public void attackRobot(Robot robot)
         {
             robot.health = robot.health - attackPower;
+
+            if(robot.health <= 0)
+            {
+                Console.WriteLine("Robot is dead.");
+                Console.ReadLine();
+            }
         }
+
+        
 
 
     }

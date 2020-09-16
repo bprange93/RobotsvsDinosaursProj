@@ -38,6 +38,8 @@ namespace RobotsVsDinosaursProject
             alpha.attackDinosaur(tRex);
             Console.WriteLine(tRex.health);
             Console.ReadLine();
+
+            
                                 
         }
     }
