@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RobotsvsDinosaurs.cs
+namespace RobotsVsDinosaursProject
 {
     class Program
     {
         static void Main(string[] args)
         {
-            string Dinosaur
         }
     }
 }
