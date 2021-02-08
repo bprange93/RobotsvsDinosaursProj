@@ -33,6 +33,13 @@ namespace RobotsVsDinosaursProject
                 Console.WriteLine("Dinosaur is dead.");
                 Console.ReadLine();
             }
+            else if (dinosaur.health < 0)
+            {
+                Console.WriteLine("Dinosaur is alive!");
+                Console.ReadLine();
+                
+            }
+            
         }
     }
 }
