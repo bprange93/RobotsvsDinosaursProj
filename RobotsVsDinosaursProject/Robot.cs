@@ -13,6 +13,8 @@ namespace RobotsVsDinosaursProject
         public double health;
         public double powerLevel;
         public Weapon weapon;
+        public bool robotAlive;
+        public string robotFleet;
 
         public Robot(string name, double health, double powerLevel, Weapon weapon)
         {
@@ -40,6 +42,20 @@ namespace RobotsVsDinosaursProject
                 
             }
             
+        }
+
+        public void CheckRobotLife()
+        {
+            if(health <= 0)
+            {
+                health = 0;
+                robotAlive = false;
+                Console.WriteLine(name + " has died");
+            }
+            else
+            {
+                Console.WriteLine(name + " has " + health + " health remaining");
+            }
         }
     }
 }
