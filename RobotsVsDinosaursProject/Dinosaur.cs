@@ -14,6 +14,8 @@ namespace RobotsVsDinosaursProject
         public double health;
         public double energy;
         public double attackPower;
+        public bool dinosaurAlive;
+        public string dinosaurHerd;
 
         //constructor
         public Dinosaur(string type, double health, double energy, double attackPower)
@@ -26,6 +28,21 @@ namespace RobotsVsDinosaursProject
         }
 
         //member methods
+
+        public void CheckDinosaurLife()
+        {
+            if(health <= 0)
+            {
+                health = 0;
+                dinosaurAlive = false;
+                Console.WriteLine(type + " has died.");
+
+            }
+            else
+            {
+                Console.WriteLine(type + " has " + health + " health remaining.");
+            }
+        }
 
         public void attackRobot(Robot robot)
         {
