@@ -31,14 +31,19 @@ namespace RobotsVsDinosaursProject
         {
             robot.health = robot.health - attackPower;
 
-            if(robot.health <= 0)
+            if (robot.health <= 0)
             {
                 Console.WriteLine("Robot is dead.");
                 Console.ReadLine();
             }
+            else if (robot.health > 0)
+            {
+                Console.WriteLine("Robot is still alive!");
+                Console.ReadLine();
+            }
         }
 
-        
+
 
 
     }
