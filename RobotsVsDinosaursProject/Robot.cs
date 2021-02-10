@@ -9,33 +9,35 @@ namespace RobotsVsDinosaursProject
 {
     class Robot
     {
-        public string name;
-        public double health;
-        public double powerLevel;
+        //member variables
+        public string robotName;
+        public double robotHealth;
+        public double robotPowerLevel;
         public Weapon weapon;
         public bool robotAlive;
         public string robotFleet;
 
-        public Robot(string name, double health, double powerLevel, Weapon weapon)
+        //constructor
+        public Robot(string robotName)
         {
-            this.name = name;
-            this.health = health;
-            this.powerLevel = powerLevel;
-            this.weapon = weapon;
-
+            robotHealth = 100;
+            robotPowerLevel = 150;
+            robotAlive = true;
+            this.robotName = robotName;
         }
 
+        //possible better way
         public void attackDinosaur(Dinosaur dinosaur)
         {
-            dinosaur.health = dinosaur.health - weapon.attackPower;
+            dinosaur.dinosaurHealth = dinosaur.dinosaurHealth - weapon.attackPower;
 
 
-            if (dinosaur.health <= 0)
+            if (dinosaur.dinosaurHealth <= 0)
             {
                 Console.WriteLine("Dinosaur is dead.");
                 Console.ReadLine();
             }
-            else if (dinosaur.health < 0)
+            else if (dinosaur.dinosaurHealth < 0)
             {
                 Console.WriteLine("Dinosaur is alive!");
                 Console.ReadLine();
@@ -46,17 +48,21 @@ namespace RobotsVsDinosaursProject
 
         public void CheckRobotLife()
         {
-            if(health <= 0)
+            if(robotHealth <= 0)
             {
-                health = 0;
+                robotHealth = 0;
                 robotAlive = false;
-                Console.WriteLine(name + " has died");
+                Console.WriteLine(robotName + " has died");
             }
             else
             {
-                Console.WriteLine(name + " has " + health + " health remaining");
+                Console.WriteLine(robotName + " has " + robotHealth + " health remaining");
             }
         }
 
+        public void IncomingAttack(double damage)
+        {
+            
+        }
     }
 }
