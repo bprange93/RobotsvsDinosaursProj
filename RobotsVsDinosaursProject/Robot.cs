@@ -60,9 +60,10 @@ namespace RobotsVsDinosaursProject
             }
         }
 
-        public void IncomingAttack(double damage)
+        public void IncomingDinosaurAttack(double damage)
         {
-            
+            robotHealth -= damage;
+            CheckRobotLife();
         }
     }
 }
