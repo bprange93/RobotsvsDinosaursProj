@@ -10,58 +10,63 @@ namespace RobotsVsDinosaursProject
     {
 
         //member variables
-        public string type;
-        public double health;
-        public double energy;
-        public double attackPower;
+        public string dinosaurType;
+        public double dinosaurHealth;
+        public double dinosaurEnergy;
+        public double dinosaurAttackPower;
         public bool dinosaurAlive;
         public string dinosaurHerd;
 
         //constructor
-        public Dinosaur(string type, double health, double energy, double attackPower)
+        public Dinosaur(string dinosaurType, double dinosaurAttackPower)
         {
-            this.type = type;
-            this.health = health;
-            this.energy = energy;
-            this.attackPower = attackPower;
+            this.dinosaurType = dinosaurType;
+            dinosaurHealth = 100;
+            dinosaurEnergy = 150;
+            dinosaurAlive = true;
+            this.dinosaurAttackPower = dinosaurAttackPower;
 
         }
 
         //member methods
-
+        
+        //checks dino health and lets them know if they are alive or dead and if alive how much health remaining
         public void CheckDinosaurLife()
         {
-            if(health <= 0)
+            if(dinosaurHealth <= 0)
             {
-                health = 0;
+                dinosaurHealth = 0;
                 dinosaurAlive = false;
-                Console.WriteLine(type + " has died.");
+                Console.WriteLine(dinosaurType + " has died.");
 
             }
             else
             {
-                Console.WriteLine(type + " has " + health + " health remaining.");
+                Console.WriteLine(dinosaurType + " has " + dinosaurHealth + " health remaining.");
             }
         }
+
 
         public void attackRobot(Robot robot)
         {
-            robot.health = robot.health - attackPower;
+            robot.health = robot.health - dinosaurAttackPower;
 
-            if (robot.health <= 0)
+        }
+        //calculate damage recieved from a robots attack
+        public void RobotAttackingDinosaur(double damage)
+        {
+            dinosaurHealth -= damage;
+            CheckDinosaurLife();
+        }
+        //takes energy away after an attack has been done
+        public void PostAttackEnergy()
+        {
+            dinosaurEnergy -= 10;
+            if(dinosaurAlive == true)
             {
-                Console.WriteLine("Robot is dead.");
-                Console.ReadLine();
-            }
-            else if (robot.health > 0)
-            {
-                Console.WriteLine("Robot is still alive!");
-                Console.ReadLine();
+                Console.WriteLine(dinosaurType + "'s energy is now: " + dinosaurEnergy);
             }
         }
-
-
-
 
     }
 }
