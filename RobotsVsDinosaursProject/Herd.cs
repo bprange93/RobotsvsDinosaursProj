@@ -10,20 +10,37 @@ namespace RobotsVsDinosaursProject
     class Herd
     {
         public List<Dinosaur> dinosaurs;
+        public bool herdAlive;
+        public string herdName;
+        public double herdHealth;
 
         public Herd()
         {
-            Dinosaur tRex = new Dinosaur("TRex", 150, 200, 300);
-            Dinosaur raptor = new Dinosaur("Raptor", 150, 250, 300);
-            Dinosaur spinosaur = new Dinosaur("Spinosaur", 200, 300, 400);
-
             dinosaurs = new List<Dinosaur>();
-            dinosaurs.Add(tRex);
-            dinosaurs.Add(raptor);
-            dinosaurs.Add(spinosaur);
+            herdAlive = true;
         }
 
+        public void AddDinosaurToHerd(Dinosaur dinosaur)
+        {
+            dinosaurs.Add(dinosaur);
+        }
 
+        //checks dinosaurs still standing
+        public double CheckHerd()
+        {
+            double herdHealth;
+            herdHealth = dinosaurs.Sum(dinosaurs => dinosaurs.dinosaurHealth);
+            return herdHealth;
+        }
+
+        public void ListHerd()
+        {
+            foreach (Dinosaur dinosaur in dinosaurs)
+            {
+                Console.WriteLine($"Name: {dinosaur.dinosaurType} Health {dinosaur.dinosaurHealth} Power Level {dinosaur.dinosaurEnergy}");
+                Console.WriteLine($"Energy: {dinosaur.dinosaurEnergy} Attack Power: {dinosaur.dinosaurAttackPower}");
+            }
+        }
 
     }
 }
