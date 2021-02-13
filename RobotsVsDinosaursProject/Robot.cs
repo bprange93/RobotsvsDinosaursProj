@@ -65,5 +65,14 @@ namespace RobotsVsDinosaursProject
             robotHealth -= damage;
             CheckRobotLife();
         }
+
+        public void PostAttckPowerLevel()
+        {
+            robotPowerLevel -= 10;
+            if(robotAlive == true)
+            {
+                Console.WriteLine(robotName + "'s engery is now at " + robotPowerLevel)
+            }
+        }
     }
 }
