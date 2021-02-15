@@ -14,8 +14,8 @@ namespace RobotsVsDinosaursProject
             Battlefield battlefield = new Battlefield();
             battlefield.StartGame();
 
-            
-                                
+
+
         }
     }
 }
