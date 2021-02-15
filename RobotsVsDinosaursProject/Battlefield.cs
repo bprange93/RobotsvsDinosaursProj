@@ -108,5 +108,88 @@ namespace RobotsVsDinosaursProject
             }
             return herdOne;
         }
+
+        public void Attack()
+        {
+            int attackerIndex;
+            int attackedIndex;
+            int attackResult;
+            double herdHealth;
+            double fleetHealth;
+
+            if(playAsRobot == true)
+            {
+                int herdSize = herd.dinosaurs.Count;
+                Console.WriteLine("Which Dinosaur will attack?");
+                for(int i = 0; i < herdSize; i++)
+                {
+                    int choice = i + 1;
+                    if(herd.dinosaurs[i].dinosaurAlive == true)
+                    {
+                        Console.WriteLine($"{choice}: {herd.dinosaurs[i].dinosaurType}");
+                    }
+                }
+                string userInput = Console.ReadLine();
+                attackedIndex = int.Parse(userInput) - 1;
+
+                int fleetSize = fleet.robots.Count;
+                Console.WriteLine("Which Robot will attack");
+                for(int i = 0; i < fleetSize; i++)
+                {
+                    int choiceTwo = i + 1;
+                    if(fleet.robots[i].robotAlive == true)
+                    {
+                        Console.WriteLine($"{choiceTwo}: { fleet.robots[i].robotName}");
+                    }
+                }
+                string userInputTwo = Console.ReadLine();
+                attackerIndex = int.Parse(userInputTwo) - 1;
+            }
+            else
+            {
+                int fleetSize = fleet.robots.Count;
+                Console.WriteLine("Which Robot will attack?");
+                for(int i = 0; i < fleetSize; i++)
+                {
+                    int choiceTwo = i + 1;
+                    if (fleet.robots[i].robotAlive == true)
+                    {
+                        Console.WriteLine($"{choiceTwo}: {fleet.robots[i].robotName}");
+                    }
+                }
+                string userInputTwo = Console.ReadLine();
+                attackedIndex = int.Parse(userInputTwo) - 1;
+
+                int herdSize = herd.dinosaurs.Count;
+                Console.WriteLine("Which Robot will attack");
+                for (int i = 0; i < fleetSize; i++)
+                {
+                    int choice = i + 1;
+                    if (herd.dinosaurs[i].dinosaurAlive == true)
+                    {
+                        Console.WriteLine($"{choice}: {herd.dinosaurs[i].dinosaurType}");
+                    }
+                }
+                string userInput = Console.ReadLine();
+                attackerIndex = int.Parse(userInput) - 1;
+
+                
+            }
+        }
+
+        public void DinosaurAttack(Dinosaur dinosaur)
+        {
+            Console.WriteLine("Pick Dinosaur Attack");
+
+            for(int i = 0; i < 3; i++)
+            {
+                int attackChoice = i + 1;
+                Console.WriteLine($"{attackChoice}: {activeAttacks[i]}");
+            }
+            string userInput = Console.ReadLine();
+            int attackIndex = int.Parse(userInput) - 1;
+            Console.WriteLine(dinosaur.dinosaurType + activeAttacks[attackIndex] + "s the robot");
+        }
+        
     }
 }
