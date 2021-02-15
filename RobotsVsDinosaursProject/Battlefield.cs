@@ -8,21 +8,45 @@ namespace RobotsVsDinosaursProject
 {
     class Battlefield
     {
-        Fleet robots;
-        Herd dinosaurs; 
+        //member variables
+        Fleet fleet;
+        Herd herd;
+        string playerTeam;
+        string computerTeam;
+        bool playAsRobot;
+        string player;
+        string computer;
+        Armory activeArmory;
+        string[] activeAttacks;
         
+        //constructor
         public Battlefield()
         {
-            robots = new Fleet();
-            dinosaurs = new Herd();
+            activeArmory = InitializeArmory();
             
         }
 
-          public void Battle()
-        {
-            //use loops to make dinosaurs and robots fight to the death. 
+        //methods
 
-             
+        //add weapons to armory
+        public Armory InitializeArmory()
+        {
+            Armory armory = new Armory();
+            return armory;
+        }
+        
+        public void ArmRobots()
+        {
+            int totalRobots = fleet.robots.Count;
+            for (int i = 0; i < totalRobots; i++)
+               activeArmory.AssignWeaponToRobot(fleet.robots[i]);
+        }
+
+        public void ArmComputerRobots()
+        {
+            int totalRobots = fleet.robots.Count;
+            for (int i = 0; i < totalRobots; i++)
+                activeArmory.ComputerPlayerWeapons(fleet.robots[i]);
         }
     }
 }

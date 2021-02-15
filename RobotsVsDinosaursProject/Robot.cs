@@ -71,7 +71,7 @@ namespace RobotsVsDinosaursProject
             robotPowerLevel -= 10;
             if(robotAlive == true)
             {
-                Console.WriteLine(robotName + "'s engery is now at " + robotPowerLevel)
+                Console.WriteLine(robotName + "'s engery is now at " + robotPowerLevel);
             }
         }
     }
