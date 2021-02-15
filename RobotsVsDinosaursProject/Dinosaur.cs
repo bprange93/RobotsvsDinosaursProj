@@ -47,7 +47,7 @@ namespace RobotsVsDinosaursProject
         }
 
 
-        public void attackRobot(Robot robot)
+        public void AttackRobot(Robot robot)
         {
             robot.robotHealth = robot.robotHealth - dinosaurAttackPower;
 

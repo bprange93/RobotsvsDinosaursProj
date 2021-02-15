@@ -27,7 +27,7 @@ namespace RobotsVsDinosaursProject
         }
 
         //possible better way
-        public void attackDinosaur(Dinosaur dinosaur)
+        public void AttackDinosaur(Dinosaur dinosaur)
         {
             dinosaur.dinosaurHealth = dinosaur.dinosaurHealth - weapon.attackPower;
 
