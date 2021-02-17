@@ -173,7 +173,7 @@ namespace RobotsVsDinosaursProject
                 string userInput = Console.ReadLine();
                 attackerIndex = int.Parse(userInput) - 1;
 
-                
+                DinosaurAttack(herd.dinosaurs[attackerIndex]);
             }
         }
 
@@ -191,5 +191,85 @@ namespace RobotsVsDinosaursProject
             Console.WriteLine(dinosaur.dinosaurType + activeAttacks[attackIndex] + "s the robot");
         }
         
+        public int AttackResult()
+        {
+            int playerRoll;
+            int computerRoll;
+            int rollResult;
+
+            playerRoll = RollDice(20);
+            Console.WriteLine($"You rolled {playerRoll}");
+            System.Threading.Thread.Sleep(500);
+            computerRoll = RollDice(20);
+            Console.WriteLine($"Computer rolled {computerRoll}");
+
+            rollResult = CompareRolls(playerRoll, computerRoll);
+            return rollResult;
+        }
+
+        public int RollDice(int number)
+        {
+            Random random;
+            random = new Random();
+            return random.Next(number);
+        }
+        public int CompareRolls(int playerRoll, int computerRoll)
+        {
+            if (playerRoll > computerRoll)
+            {
+                return 1;
+            }
+            else if (playerRoll < computerRoll)
+            {
+                return 0;
+            }
+            else
+            {
+                return 2;
+            }
+
+        }
+        public void DinosaurWin()
+        {
+            Console.WriteLine("The Robots have defeated the Herd!");
+            Console.WriteLine("Would you like to play again? Y or N");
+            string userInput = Console.ReadLine();
+            switch (userInput)
+            {
+                case "y":
+                case "Y":
+                    StartGame();
+                    break;
+                case "n":
+                case "N":
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Environment.Exit(0);
+                    break;
+            }
+        }
+
+        public void RobotWin()
+        {
+            Console.WriteLine("The Dinosaurs have defeated the Robots!");
+            Console.WriteLine("Would you like to play again? Y or N");
+            string userInput = Console.ReadLine();
+            switch (userInput)
+            {
+                case "y":
+                case "Y":
+
+                    StartGame();
+                    break;
+                case "n":
+                case "N":
+                    Environment.Exit(0);
+                    break;
+                default:
+                    Environment.Exit(0);
+                    break;
+            }
+        }
     }
 }
