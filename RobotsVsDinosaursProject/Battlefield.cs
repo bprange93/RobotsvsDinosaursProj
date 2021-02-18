@@ -175,7 +175,128 @@ namespace RobotsVsDinosaursProject
 
                 DinosaurAttack(herd.dinosaurs[attackerIndex]);
             }
+            attackResult = DetermineAttackResult();
+
+            if (attackResult == 1 && playAsRobot == true)
+            {
+                Console.WriteLine("Successful Attack");
+                fleet.robots[attackerIndex].AttackDinosaur(herd.dinosaurs[attackedIndex]);
+                herdHealth = herd.CheckHerd();
+                fleet.robots[attackerIndex].PostAttackPowerLevel();
+
+                if (herdHealth <= 0)
+                {
+                    RobotWin();
+                }
+                else
+                {
+                    GameMenu();
+                }
+
+            }
+            else if (attackResult == 0 && playAsRobot == true)
+            {
+                Console.WriteLine($"Unsuccessful Attack!  You have been counter attacked by {herd.dinosaurs[attackedIndex].dinosaurType}");
+                herd.dinosaurs[attackedIndex].AttackRobot(fleet.robots[attackerIndex]);
+                fleetHealth = fleet.CheckFleet();
+                fleet.robots[attackerIndex].PostAttackPowerLevel();
+                if (fleetHealth <= 0)
+                {
+                    DinosaurWin();
+                }
+                else
+                {
+                    GameMenu();
+                }
+
+            }
+            else if (attackResult == 2 && playAsRobot == true)
+            {
+                Console.WriteLine("The attack has ended in a stalemate!  You have taken no damage, nor have you inflicted any");
+                fleet.robots[attackerIndex].PostAttackPowerLevel();
+                GameMenu();
+            }
+            else if (attackResult == 1 && playAsRobot == false)
+            {
+                Console.WriteLine("Successful Attack");
+                herd.dinosaurs[attackerIndex].AttackRobot(fleet.robots[attackedIndex]);
+                fleetHealth = fleet.CheckFleet();
+                herd.dinosaurs[attackerIndex].PostAttackEnergy();
+                if (fleetHealth <= 0)
+                {
+                    DinosaurWin();
+                }
+                else
+                {
+                    GameMenu();
+                }
+
+            }
+            else if (attackResult == 0 && playAsRobot == false)
+            {
+                Console.WriteLine($"Unsuccessful Attack!  You have been counter attacked by {fleet.robots[attackedIndex].robotName}");
+                fleet.robots[attackedIndex].AttackDinosaur(herd.dinosaurs[attackerIndex]);
+                herdHealth = herd.CheckHerd();
+                herd.dinosaurs[attackerIndex].PostAttackEnergy();
+                if (herdHealth <= 0)
+                {
+                    RobotWin();
+                }
+                else
+                {
+                    GameMenu();
+                }
+
+
+            }
+            else if (attackResult == 2 && playAsRobot == false)
+            {
+                Console.WriteLine("The attack has ended in a stalemate!  You have taken no damage, nor have you inflicted any");
+                herd.dinosaurs[attackerIndex].PostAttackEnergy();
+                GameMenu();
+            }
+
+
+
+
         }
+
+        public void GameMenu()
+        {
+            Console.WriteLine("What would you like to do?");
+            Console.WriteLine();
+            Console.WriteLine($"1. View My {playerTeam}");
+            Console.WriteLine($"2. Attack a {computer}");
+            Console.WriteLine("3. Exit Game");
+
+            string userInput = Console.ReadLine();
+            switch (userInput)
+            {
+                case "1":
+                    if (playAsRobot == false)
+                    {
+                        herd.ListHerd();
+                        GameMenu();
+                    }
+                    else
+                    {
+                        fleet.ListFleet();
+                        GameMenu();
+                    }
+                    break;
+                case "2":
+                    Attack();
+                    break;
+                case "3":
+                    Environment.Exit(0);
+                    break;
+                default:
+                    GameMenu();
+                    break;
+            }
+
+        }
+    
 
         public void DinosaurAttack(Dinosaur dinosaur)
         {
@@ -191,7 +312,7 @@ namespace RobotsVsDinosaursProject
             Console.WriteLine(dinosaur.dinosaurType + activeAttacks[attackIndex] + "s the robot");
         }
         
-        public int AttackResult()
+        public int DetermineAttackResult()
         {
             int playerRoll;
             int computerRoll;
@@ -270,6 +391,76 @@ namespace RobotsVsDinosaursProject
                     Environment.Exit(0);
                     break;
             }
+        }
+
+        public void StartGame()
+        {
+            Console.WriteLine("Welcome to Robots Vs Dinosaurs!");
+            Console.WriteLine("Would you like to play as the Robots or Dinosaurs?");
+            Console.WriteLine("1. Robots");
+            Console.WriteLine("2. Dinosaurs");
+            Console.WriteLine("3. Exit Game");
+            string userInput = Console.ReadLine();
+
+            switch (userInput)
+            {
+                case "1":
+                    player = "Robot";
+                    playerTeam = "Fleet";
+                    playAsRobot = true;
+                    computer = "Dinosaur";
+                    computerTeam = "Herd";
+                    fleet = CreateRobots();
+                    herd = CreateDinosaurs();
+                    ArmRobots();
+                    RunGame();
+                    Console.Clear();
+                    break;
+
+                case "2":
+                    player = "Dinosaur";
+                    playerTeam = "Herd";
+                    playAsRobot = true;
+                    computer = "Robot";
+                    computerTeam = "Fleet";
+                    fleet = CreateRobots();
+                    herd = CreateDinosaurs();
+                    ArmComputerRobots();
+                    RunGame();
+                    Console.Clear();
+                    break;
+
+                case "3":
+                    Environment.Exit(0);
+                    break;
+                default:
+                    RunGame();
+                    break;
+
+            }
+        }
+
+        public void RunGame()
+        {
+            Console.WriteLine($"Name your {playerTeam}");
+            string userInput = Console.ReadLine();
+            if(playAsRobot == true)
+            {
+                fleet.fleetName = userInput;
+                herd.herdName = "Enemy  Herd";
+                Console.Clear();
+                Console.WriteLine(fleet.fleetName + " VS " + herd.herdName);
+                Console.WriteLine();
+            }
+            else
+            {
+                herd.herdName = userInput;
+                fleet.fleetName = "Enemy Fleet";
+                Console.Clear();
+                Console.WriteLine(herd.herdName + "VS " + fleet.fleetName);
+                Console.WriteLine();
+            }
+            GameMenu();
         }
     }
 }
