@@ -66,7 +66,7 @@ namespace RobotsVsDinosaursProject
             CheckRobotLife();
         }
 
-        public void PostAttckPowerLevel()
+        public void PostAttackPowerLevel()
         {
             robotPowerLevel -= 10;
             if(robotAlive == true)
